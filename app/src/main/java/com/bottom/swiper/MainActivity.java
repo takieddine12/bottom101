@@ -2,6 +2,8 @@ package com.bottom.swiper;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 public class MainActivity extends AppCompatActivity {
     private BottomSheetBehavior mBottomSheetBehavior;
+    private RecyclerView recyclerView1,recyclerView2;
+    private MyAdapter myAdapter;
     private TextView mTextViewState;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,35 +23,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         View bottomSheet = findViewById(R.id.bottom_sheet);
+        recyclerView1 = findViewById(R.id.rv1);
+        recyclerView2 = findViewById(R.id.rv2);
         mBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
-        mBottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                switch (newState) {
-                    case BottomSheetBehavior.STATE_COLLAPSED:
-                        mTextViewState.setText("Collapsed");
-                        break;
-                    case BottomSheetBehavior.STATE_DRAGGING:
-                        mTextViewState.setText("Dragging...");
-                        break;
-                    case BottomSheetBehavior.STATE_EXPANDED:
-                        mTextViewState.setText("Expanded");
-                        break;
-                    case BottomSheetBehavior.STATE_HIDDEN:
-                        mTextViewState.setText("Hidden");
-                        break;
-                    case BottomSheetBehavior.STATE_SETTLING:
-                        mTextViewState.setText("Settling...");
-                        break;
-                    case BottomSheetBehavior.STATE_HALF_EXPANDED:
-                        break;
-                }
-            }
 
-            @Override
-            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                mTextViewState.setText("Sliding...");
-            }
-        });
+        setRecyclerView1();
+        setRecyclerView2();
+    }
+
+    private void setRecyclerView1(){
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,4);
+        recyclerView1.setLayoutManager(gridLayoutManager);
+        recyclerView1.setHasFixedSize(true);
+
+        myAdapter = new MyAdapter(Utils.getImages());
+        recyclerView1.setAdapter(myAdapter);
+    }
+    private void setRecyclerView2(){
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
+        recyclerView2.setLayoutManager(gridLayoutManager);
+        recyclerView2.setHasFixedSize(true);
+
+        myAdapter = new MyAdapter(Utils.getImages());
+        recyclerView2.setAdapter(myAdapter);
     }
 }
