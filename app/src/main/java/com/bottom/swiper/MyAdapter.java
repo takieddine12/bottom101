@@ -17,7 +17,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private ArrayList<Model> arrayList;
 
-
     public MyAdapter(ArrayList<Model> arrayList) {
         this.arrayList  = arrayList;
     }
