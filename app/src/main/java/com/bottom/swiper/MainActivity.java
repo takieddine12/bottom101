@@ -23,28 +23,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         View bottomSheet = findViewById(R.id.bottom_sheet);
-        recyclerView1 = findViewById(R.id.rv1);
+        //recyclerView1 = findViewById(R.id.rv1);
         recyclerView2 = findViewById(R.id.rv2);
         mBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
 
-        setRecyclerView1();
+       // setRecyclerView1();
         setRecyclerView2();
     }
 
-    private void setRecyclerView1(){
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,4);
-        recyclerView1.setLayoutManager(gridLayoutManager);
-        recyclerView1.setHasFixedSize(true);
-
-        myAdapter = new MyAdapter(Utils.getImages());
-        recyclerView1.setAdapter(myAdapter);
-    }
+//    private void setRecyclerView1(){
+//        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,4);
+//        recyclerView1.setLayoutManager(gridLayoutManager);
+//        recyclerView1.setHasFixedSize(true);
+//
+//        myAdapter = new MyAdapter(Utils.getImages());
+//        recyclerView1.setAdapter(myAdapter);
+//    }
     private void setRecyclerView2(){
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,4);
         recyclerView2.setLayoutManager(gridLayoutManager);
         recyclerView2.setHasFixedSize(true);
-
+        recyclerView2.setNestedScrollingEnabled(false);
         myAdapter = new MyAdapter(Utils.getImages());
         recyclerView2.setAdapter(myAdapter);
     }
+
 }
