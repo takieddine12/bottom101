@@ -2,9 +2,12 @@ package com.bottom.swiper;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -18,7 +21,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 public class MainActivity extends AppCompatActivity {
     private BottomSheetBehavior mBottomSheetBehavior;
-    private RecyclerView recyclerView1,recyclerView2;
+    private NestedScrollView nestedScrollView;
+    private RecyclerView recyclerView;
     private MyAdapter myAdapter;
     private TextView mTextViewState;
     @Override
@@ -26,33 +30,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        View bottomSheet = findViewById(R.id.bottom_sheet);
-        recyclerView2 = findViewById(R.id.rv2);
-        mBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+        nestedScrollView = findViewById(R.id.bottom_sheet);
+        recyclerView = findViewById(R.id.rv2);
+        mBottomSheetBehavior = BottomSheetBehavior.from(nestedScrollView);
 
         final DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         mBottomSheetBehavior.setPeekHeight(50);
         mBottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            float prevOffset = 0;
-
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
-//                switch (newState) {
-//                    case BottomSheetBehavior.STATE_EXPANDED:
-//                        mBottomSheetBehavior.setPeekHeight(800);
-//                        break;
-//                    case BottomSheetBehavior.STATE_HALF_EXPANDED:
-//                        mBottomSheetBehavior.setPeekHeight(400);
-//                        break;
-//                    case BottomSheetBehavior.STATE_COLLAPSED:
-//                        mBottomSheetBehavior.setPeekHeight(50);
-//                        break;
-//                    case BottomSheetBehavior.STATE_DRAGGING:
-//                    case BottomSheetBehavior.STATE_SETTLING:
-//                    case BottomSheetBehavior.STATE_HIDDEN:
-//                        break;
-//                }
             }
 
             @Override
@@ -66,15 +53,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
         setRecyclerView2();
+
     }
 
     private void setRecyclerView2(){
-        recyclerView2.setLayoutManager(new GridLayoutManager(this,3));
-        recyclerView2.setHasFixedSize(true);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this,3);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setHasFixedSize(false);
         myAdapter = new MyAdapter(Utils.getImages());
-        recyclerView2.setAdapter(myAdapter);
+        recyclerView.setAdapter(myAdapter);
     }
 
 }
