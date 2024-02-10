@@ -15,13 +15,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 public class MainActivity extends AppCompatActivity {
     private BottomSheetBehavior mBottomSheetBehavior;
-    private NestedScrollView nestedScrollView;
+    private ScrollView nestedScrollView;
     private RecyclerView recyclerView;
     private MyAdapter myAdapter;
     private TextView mTextViewState;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         nestedScrollView = findViewById(R.id.bottom_sheet);
-        recyclerView = findViewById(R.id.rv2);
+        recyclerView = findViewById(R.id.rv);
         mBottomSheetBehavior = BottomSheetBehavior.from(nestedScrollView);
 
         final DisplayMetrics metrics = new DisplayMetrics();
@@ -39,9 +40,7 @@ public class MainActivity extends AppCompatActivity {
         mBottomSheetBehavior.setPeekHeight(50);
         mBottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
-            public void onStateChanged(@NonNull View bottomSheet, int newState) {
-            }
-
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {}
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
                 if (slideOffset < 0.25) {
