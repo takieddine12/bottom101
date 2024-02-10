@@ -27,17 +27,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         View bottomSheet = findViewById(R.id.bottom_sheet);
-        //recyclerView1 = findViewById(R.id.rv1);
         recyclerView2 = findViewById(R.id.rv2);
         mBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
-
-       // setRecyclerView1();
-        setRecyclerView2();
 
         final DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         mBottomSheetBehavior.setPeekHeight(50);
-
         mBottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             float prevOffset = 0;
 
@@ -71,13 +66,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        setRecyclerView2();
     }
 
     private void setRecyclerView2(){
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
-        recyclerView2.setLayoutManager(gridLayoutManager);
+        recyclerView2.setLayoutManager(new GridLayoutManager(this,3));
         recyclerView2.setHasFixedSize(true);
-        recyclerView2.setNestedScrollingEnabled(false);
         myAdapter = new MyAdapter(Utils.getImages());
         recyclerView2.setAdapter(myAdapter);
     }

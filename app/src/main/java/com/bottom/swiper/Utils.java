@@ -9,15 +9,18 @@ public class Utils {
         arrayList.add(new Model(R.drawable.image));
         arrayList.add(new Model(R.drawable.image));
         arrayList.add(new Model(R.drawable.image));
-        arrayList.add(new Model(R.drawable.image));
-        arrayList.add(new Model(R.drawable.image));
-        arrayList.add(new Model(R.drawable.image));
-        arrayList.add(new Model(R.drawable.image));
-        arrayList.add(new Model(R.drawable.image));
-        arrayList.add(new Model(R.drawable.image));
-        arrayList.add(new Model(R.drawable.image));
-        arrayList.add(new Model(R.drawable.image));
-        arrayList.add(new Model(R.drawable.image));
+        arrayList.add(new Model(R.drawable.image2));
+        arrayList.add(new Model(R.drawable.image2));
+        arrayList.add(new Model(R.drawable.image2));
+        arrayList.add(new Model(R.drawable.image3));
+        arrayList.add(new Model(R.drawable.image3));
+        arrayList.add(new Model(R.drawable.image3));
+        arrayList.add(new Model(R.drawable.image4));
+        arrayList.add(new Model(R.drawable.image4));
+        arrayList.add(new Model(R.drawable.image4));
+        arrayList.add(new Model(R.drawable.image5));
+        arrayList.add(new Model(R.drawable.image5));
+        arrayList.add(new Model(R.drawable.image5));
         return  arrayList;
     }
 }
