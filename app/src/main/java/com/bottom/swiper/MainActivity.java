@@ -2,6 +2,7 @@ package com.bottom.swiper;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.motion.widget.MotionLayout;
 import androidx.core.view.ViewCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -15,27 +16,53 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 public class MainActivity extends AppCompatActivity {
-    private BottomSheetBehavior mBottomSheetBehavior;
-    private ScrollView nestedScrollView;
+
+    MotionLayout motionLayout;
+    LinearLayout contentLayout;
+    boolean isPaused = false;
     private RecyclerView recyclerView;
     private MyAdapter myAdapter;
-    private TextView mTextViewState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nestedScrollView = findViewById(R.id.bottom_sheet);
         recyclerView = findViewById(R.id.rv);
-        mBottomSheetBehavior = BottomSheetBehavior.from(nestedScrollView);
+        motionLayout = findViewById(R.id.motionLayout);
+        contentLayout = findViewById(R.id.contentLayout);
 
-        final DisplayMetrics metrics = new DisplayMetrics();
+        setRecyclerView();
+        createMotionLayout();
+
+    }
+
+    private void createMotionLayout(){
+
+    }
+
+
+    private void setRecyclerView(){
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this,3);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setHasFixedSize(false);
+        myAdapter = new MyAdapter(Utils.getImages());
+        recyclerView.setAdapter(myAdapter);
+    }
+
+}
+
+
+/*
+final DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         mBottomSheetBehavior.setPeekHeight(50);
         mBottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
@@ -52,17 +79,4 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        setRecyclerView2();
-
-    }
-
-    private void setRecyclerView2(){
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this,3);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setHasFixedSize(false);
-        myAdapter = new MyAdapter(Utils.getImages());
-        recyclerView.setAdapter(myAdapter);
-    }
-
-}
+ */
