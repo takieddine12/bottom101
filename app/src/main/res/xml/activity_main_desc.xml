@@ -13,6 +13,7 @@
         motion:duration="5000">
 
         <OnSwipe
+            app:touchRegionId="@id/contentLayout"
             app:touchAnchorSide="top"
             app:dragDirection="dragUp"
             app:dragScale="0.2"
@@ -31,6 +32,7 @@
         motion:duration="5000">
 
         <OnSwipe
+            app:touchRegionId="@id/contentLayout"
             app:touchAnchorSide="bottom"
             app:dragDirection="dragDown"
             app:dragScale="0.2"
