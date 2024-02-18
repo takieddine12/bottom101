@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
@@ -56,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(false);
         myAdapter = new MyAdapter(Utils.getImages());
         recyclerView.setAdapter(myAdapter);
+        myAdapter.onSized(new MyAdapter.OnSizeListener() {
+            @Override
+            public void onClicked(int height, int width) {
+                Toast.makeText(MainActivity.this,
+                           "Height is : " + height + " Width is : " + width +
+                                "\n Row Count is : " + myAdapter.getItemCount(),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }

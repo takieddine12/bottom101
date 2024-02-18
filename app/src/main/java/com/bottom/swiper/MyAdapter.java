@@ -14,11 +14,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-
     private ArrayList<Model> arrayList;
-
     public MyAdapter(ArrayList<Model> arrayList) {
         this.arrayList  = arrayList;
+    }
+
+    public OnSizeListener onSizeListener;
+    public interface OnSizeListener {
+        void onClicked(int height , int width);
+    }
+    public void onSized(OnSizeListener onSizeListener){
+        this.onSizeListener = onSizeListener;
     }
 
     @NonNull
@@ -32,6 +38,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Model item = arrayList.get(position);
         holder.imageView.setImageResource(item.getImage());
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(onSizeListener != null){
+                    int pos = holder.getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION){
+                        onSizeListener.onClicked(v.getHeight(),v.getWidth());
+                    }
+                }
+            }
+        });
     }
 
 
