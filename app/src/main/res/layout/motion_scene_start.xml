@@ -16,10 +16,18 @@
         android:layout_height="0dp"
         android:scaleType="centerCrop"
         android:src="@drawable/image"
-        app:layout_constraintBottom_toBottomOf="@+id/contentLayout"
+        app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/contentLayout" />
 
     <LinearLayout
         android:id="@+id/contentLayout"
@@ -31,39 +39,103 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
+            android:id="@+id/dashBord"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
             android:orientation="horizontal">
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/ic_launcher_background" />
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_launcher_background" />
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_launcher_background" />
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/camera"/>
 
-            <ImageView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Camera"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/ic_launcher_background" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/designer"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Designer"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/stickers"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Stickers"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/profile"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"

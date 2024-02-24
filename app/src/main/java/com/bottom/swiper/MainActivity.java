@@ -13,6 +13,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.rv);
         motionLayout = findViewById(R.id.motionLayout);
-        contentLayout = findViewById(R.id.contentLayout);
+       // contentLayout = findViewById(R.id.contentLayout);
 
         setRecyclerView();
         createMotionLayout();
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(false);
         myAdapter = new MyAdapter(Utils.getImages());
         recyclerView.setAdapter(myAdapter);
+
         myAdapter.onSized(new MyAdapter.OnSizeListener() {
             @Override
             public void onClicked(int height, int width) {
